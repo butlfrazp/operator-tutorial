@@ -16,6 +16,15 @@ There are two things we need to handle in Reconcile.
 
 ### Creating new deployment if CRD does not exist
 
+
+#### 1) Getting the data from the CRD
+
+In this step, we will be converting the yaml representation of the CRD into the structure which we defined in the `types.go` file.
+We need to do this so we can access the list of songs that we pass to the CRD.
+Leveraging the `Get` function from the Reconciler, we can get the object.
+If there is an error, we need to check the type.
+If the error is of type not found, we know the object has been deleted.
+
 ```golang
 log := log.FromContext(ctx)
 
@@ -30,6 +39,15 @@ if err != nil {
     return ctrl.Result{}, err
 }
 ```
+
+#### 2) Deploying or updating the deployment
+
+This CRD deploys a pod which expects a json stringified version of the songs data.
+There are two cases when it comes to handling the deployment.
+One case is where the deployment is not created.
+If the deployment is not created, we need to create the deployment.
+The other case is when the deployment exists.
+In this case, we move on to the next step.
 
 ```golang
 found := &appsv1.Deployment{}
