@@ -3,5 +3,32 @@ kind: SongsConfig
 metadata:
   name: songsconfig-sample
 spec:
-  # Add fields here
-  foo: bar
+  songs:
+  - id: 0
+    artist: "FKJ"
+    title: "French Kiwi Juice"
+    genre: Indie
+  - id: 1
+    artist: "slenderbodies"
+    title: "are we?"
+    genre: Indie
+  - id: 2
+    artist: "Rufus Du Sol"
+    title: "SOLACE"
+    genre: EDM
+  - id: 3
+    artist: "Still Woozy"
+    title: "Lately EP"
+    genre: Indie
+  - id: 4
+    artist: "Petit Biscuit"
+    title: "Presence"
+    genre: EDM
+  - id: 5
+    artist: "Magic City Hippies"
+    title: "Hippie Castle EP"
+    genre: Indie
+  - id: 6
+    artist: "SG Lewis"
+    title: "times"
+    genre: EDM
