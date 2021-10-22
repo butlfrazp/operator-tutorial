@@ -46,6 +46,9 @@ This CRD deploys a pod which expects a json stringified version of the songs dat
 There are two cases when it comes to handling the deployment.
 One case is where the deployment is not created.
 If the deployment is not created, we need to create the deployment.
+One quick note on the implementation.
+When the deployment is successfully deployed, we requeue.
+This is to ensure that the deployment has the correct data as we'll see in the next step.
 The other case is when the deployment exists.
 In this case, we move on to the next step.
 
@@ -71,7 +74,13 @@ if err != nil {
 }
 ```
 
-### Updating an Existing Deployment
+#### 3) Updating an existing deployment
+
+The last step is checking if any updates need to be applied.
+In this step, we need to compare the songs in the CRD against the songs in the deployment.
+If the array of songs differ, we need to update the deployment with the new set of songs.
+Once again, we utilize a requeue after successfully updating the deployment.
+This is done to ensure that the updated deployment matches what is expected.
 
 ```golang
 songs := &songsConfigs.Spec.Songs
