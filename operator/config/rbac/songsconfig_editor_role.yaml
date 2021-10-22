@@ -1,0 +1,24 @@
+# permissions for end users to edit songsconfigs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: songsconfig-editor-role
+rules:
+- apiGroups:
+  - songs.example.com
+  resources:
+  - songsconfigs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - songs.example.com
+  resources:
+  - songsconfigs/status
+  verbs:
+  - get

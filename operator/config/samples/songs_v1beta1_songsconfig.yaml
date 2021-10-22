@@ -1,0 +1,7 @@
+apiVersion: songs.example.com/v1beta1
+kind: SongsConfig
+metadata:
+  name: songsconfig-sample
+spec:
+  # Add fields here
+  foo: bar

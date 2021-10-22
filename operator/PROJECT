@@ -1,0 +1,19 @@
+domain: example.com
+layout:
+- go.kubebuilder.io/v3
+plugins:
+  manifests.sdk.operatorframework.io/v2: {}
+  scorecard.sdk.operatorframework.io/v2: {}
+projectName: operator
+repo: github.com/butlfrazp/operator-tutorial/operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: example.com
+  group: songs
+  kind: SongsConfig
+  path: github.com/butlfrazp/operator-tutorial/operator/api/v1beta1
+  version: v1beta1
+version: "3"
